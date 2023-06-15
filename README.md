@@ -1,4 +1,4 @@
-# Qwik City App ⚡️
+# Qwik + Google Maps
 
 - [Qwik Docs](https://qwik.builder.io/)
 - [Discord](https://qwik.builder.io/chat)
