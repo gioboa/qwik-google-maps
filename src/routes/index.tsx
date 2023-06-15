@@ -1,22 +1,9 @@
-import {
-	component$,
-	useContext,
-	useSignal,
-	useVisibleTask$,
-} from '@builder.io/qwik';
-import { AppContext } from './layout';
+import { component$, useSignal } from '@builder.io/qwik';
+import { useGoogleMaps } from '~/hooks/google-maps';
 
 export default component$(() => {
-	const appStore = useContext(AppContext);
 	const containerRefSignal = useSignal<Element>();
-
-	useVisibleTask$(async () => {
-		new appStore.googleMaps.maps.Map(containerRefSignal.value!, {
-			center: { lat: -34.397, lng: 150.644 },
-			zoom: 8,
-		});
-	});
-
+	useGoogleMaps(containerRefSignal);
 	return (
 		<div>
 			<div class='full-screen' ref={containerRefSignal}></div>
@@ -26,15 +13,7 @@ export default component$(() => {
 });
 
 export const SecondMaps = component$(() => {
-	const appStore = useContext(AppContext);
 	const containerRefSignal = useSignal<Element>();
-
-	useVisibleTask$(async () => {
-		new appStore.googleMaps.maps.Map(containerRefSignal.value!, {
-			center: { lat: -34.397, lng: 150.644 },
-			zoom: 8,
-		});
-	});
-
+	useGoogleMaps(containerRefSignal);
 	return <div class='full-screen' ref={containerRefSignal}></div>;
 });
